@@ -1,43 +1,4 @@
 # 泛型
--------------------
-
-> 1.0
-> 翻译：[takalard](https://github.com/takalard)
-> 校对：[lifedim](https://github.com/lifedim)
-
-> 2.0
-> 翻译+校对： [SergioChan](https://github.com/SergioChan)
-
-> 2.1
-> 校对：[shanks](http://codebuild.me)，2015-11-01
-
-> 2.2：翻译+校对：[Lanford](https://github.com/LanfordCai)，2016-04-08 [SketchK](https://github.com/SketchK) 2016-05-16
-
-> 3.0：翻译+校对：[chenmingjia](https://github.com/chenmingjia)，2016-09-12
-> 3.0.1，shanks，2016-11-13
-
-> 3.1：翻译：[qhd](https://github.com/qhd)，2017-04-10
-
-> 4.0
-> 翻译+校对：[kemchenj](https://kemchenj.github.io/) 2017-09-21
-
-> 4.1
-> 翻译+校对：[mylittleswift](https://github.com/mylittleswift)
-
-本页包含内容：
-
-- [泛型所解决的问题](#the_problem_that_generics_solve)
-- [泛型函数](#generic_functions)
-- [类型参数](#type_parameters)
-- [命名类型参数](#naming_type_parameters)
-- [泛型类型](#generic_types)
-- [扩展一个泛型类型](#extending_a_generic_type)
-- [类型约束](#type_constraints)
-- [关联类型](#associated_types)
-- [泛型 Where 语句](#where_clauses)
-- [具有泛型 where 子句的扩展](#extensions_with_a_generic_where_clause)
-- [具有泛型 Where 子句的关联类型](#associated_types_with_a_generic_where_clause)
-- [泛型下标](#generic_subscripts)
 
 *泛型代码*让你能够根据自定义的需求，编写出适用于任意类型、灵活可重用的函数及类型。它能让你避免代码的重复，用一种清晰和抽象的方式来表达代码的意图。
 
@@ -76,7 +37,7 @@ func swapTwoStrings(_ a: inout String, _ b: inout String) {
     a = b
     b = temporaryA
 }
- 
+
 func swapTwoDoubles(_ a: inout Double, _ b: inout Double) {
     let temporaryA = a
     a = b
@@ -338,7 +299,7 @@ func findIndex<T>(of valueToFind: T, in array:[T]) -> Int? {
 
 上面所写的函数无法通过编译。问题出在相等性检查上，即 "`if value == valueToFind`"。不是所有的 Swift 类型都可以用等式符（`==`）进行比较。比如说，如果你创建一个自定义的类或结构体来表示一个复杂的数据模型，那么 Swift 无法猜到对于这个类或结构体而言“相等”意味着什么。正因如此，这部分代码无法保证适用于每个可能的类型 `T`，当你试图编译这部分代码时会出现相应的错误。
 
-不过，所有的这些并不会让我们无从下手。Swift 标准库中定义了一个 `Equatable` 协议，该协议要求任何遵循该协议的类型必须实现等式符（`==`）及不等符(`!=`)，从而能对该类型的任意两个值进行比较。所有的 Swift 标准类型自动支持 `Equatable` 协议。
+不过，所有的这些并不会让我们无从下手。Swift 标准库中定义了一个 `Equatable` 协议，该协议要求任何遵循该协议的类型必须实现等式符（`==`）及不等符（`!=`），从而能对该类型的任意两个值进行比较。所有的 Swift 标准类型自动支持 `Equatable` 协议。
 
 任何 `Equatable` 类型都可以安全地使用在 `findIndex(of:in:)` 函数中，因为其保证支持等式操作符。为了说明这个事实，当你定义一个函数时，你可以定义一个 `Equatable` 类型约束作为类型参数定义的一部分：
 
@@ -746,7 +707,7 @@ extension Container {
 
 - 在尖括号中的泛型参数 `Indices`，必须是符合标准库中的 `Sequence` 协议的类型。
 - 下标使用的单一的参数，`indices`，必须是 `Indices` 的实例。
-- 泛型 `where` 子句要求 Sequence（Indices）的迭代器，其所有的元素都是 `Int` 类型。这样就能确保在序列（Sequence）中的索引和容器(Container)里面的索引类型是一致的。
+- 泛型 `where` 子句要求 Sequence（Indices）的迭代器，其所有的元素都是 `Int` 类型。这样就能确保在序列（Sequence）中的索引和容器（Container）里面的索引类型是一致的。
 
 综合一下，这些约束意味着，传入到 `indices` 下标，是一个整型的序列。
 

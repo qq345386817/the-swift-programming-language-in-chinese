@@ -1,38 +1,11 @@
-# 方法（Methods）
------------------
-
-> 1.0
-> 翻译：[pp-prog](https://github.com/pp-prog)
-> 校对：[zqp](https://github.com/zqp)
-
-> 2.0
-> 翻译+校对：[DianQK](https://github.com/DianQK)
-
-> 2.1
-> 翻译：[DianQK](https://github.com/DianQK)，[Realank](https://github.com/Realank) 校对：[shanks](http://codebuild.me)，2016-01-18
-
-> 2.2
-> 校对：[SketchK](https://github.com/SketchK) 2016-05-13
-
-> 3.0.1，shanks，2016-11-13
-
-> 4.0
-> 校对：[kemchenj](https://kemchenj.github.io/) 2017-09-21
-
-> 4.1
-> 翻译+校对：[mylittleswift](https://github.com/mylittleswift)
-
-本页包含内容：
-
-- [实例方法](#instance_methods)
-- [类型方法](#type_methods)
+# 方法
 
 *方法*是与某些特定类型相关联的函数。类、结构体、枚举都可以定义实例方法；实例方法为给定类型的实例封装了具体的任务与功能。类、结构体、枚举也可以定义类型方法；类型方法与类型本身相关联。类型方法与 Objective-C 中的类方法（class methods）相似。
 
 结构体和枚举能够定义方法是 Swift 与 C/Objective-C 的主要区别之一。在 Objective-C 中，类是唯一能定义方法的类型。但在 Swift 中，你不仅能选择是否要定义一个类/结构体/枚举，还能灵活地在你创建的类型（类/结构体/枚举）上定义方法。
 
 <a name="instance_methods"></a>
-## 实例方法 (Instance Methods)
+## 实例方法（Instance Methods）
 
 *实例方法*是属于某个特定类、结构体或者枚举类型实例的方法。实例方法提供访问和修改实例属性的方法或提供与实例目的相关的功能，并以此来支撑实例的功能。实例方法的语法与函数完全一致，详情参见[函数](./06_Functions.md)。
 
@@ -117,7 +90,7 @@ if somePoint.isToTheRightOfX(1.0) {
 
 结构体和枚举是*值类型*。默认情况下，值类型的属性不能在它的实例方法中被修改。
 
-但是，如果你确实需要在某个特定的方法中修改结构体或者枚举的属性，你可以为这个方法选择 `可变(mutating)`行为，然后就可以从其方法内部改变它的属性；并且这个方法做的任何改变都会在方法执行结束时写回到原始结构中。方法还可以给它隐含的 `self` 属性赋予一个全新的实例，这个新实例在方法结束时会替换现存实例。
+但是，如果你确实需要在某个特定的方法中修改结构体或者枚举的属性，你可以为这个方法选择 `可变（mutating）`行为，然后就可以从其方法内部改变它的属性；并且这个方法做的任何改变都会在方法执行结束时写回到原始结构中。方法还可以给它隐含的 `self` 属性赋予一个全新的实例，这个新实例在方法结束时会替换现存实例。
 
 要使用 `可变`方法，将关键字 `mutating` 放到方法的 `func` 关键字之前就可以了：
 

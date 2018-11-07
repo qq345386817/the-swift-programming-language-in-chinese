@@ -1,30 +1,4 @@
 # 嵌套类型
------------------
-
-> 1.0
-> 翻译：[Lin-H](https://github.com/Lin-H)
-> 校对：[shinyzhu](https://github.com/shinyzhu)
-
-> 2.0
-> 翻译+校对：[SergioChan](https://github.com/SergioChan)
-
-> 2.1
-> 校对：[shanks](http://codebuild.me)，2015-11-01
-> 
-> 2.2
-> 翻译+校对：[SketchK](https://github.com/SketchK) 2016-05-16
-> 3.0.1，shanks，2016-11-13
-
-> 4.0
-> 翻译+校对：[EyreFree](https://www.eyrefree.org/) 2017-10-19
-
-> 4.1
-> 翻译+校对：[mylittleswift](https://github.com/mylittleswift)
-
-本页包含内容：
-
-- [嵌套类型实践](#nested_types_in_action)
-- [引用嵌套类型](#referring_to_nested_types)
 
 枚举常被用于为特定类或结构体实现某些功能。类似地，枚举可以方便的定义工具类或结构体，从而为某个复杂的类型所使用。为了实现这种功能，Swift 允许你定义*嵌套类型*，可以在支持的类型中定义嵌套的枚举、类和结构体。
 
@@ -33,7 +7,7 @@
 <a name="nested_types_in_action"></a>
 ## 嵌套类型实践
 
-下面这个例子定义了一个结构体 `BlackjackCard`（二十一点），用来模拟 `BlackjackCard` 中的扑克牌点数。`BlackjackCard`  结构体包含两个嵌套定义的枚举类型 `Suit` 和 `Rank`。
+下面这个例子定义了一个结构体 `BlackjackCard`（二十一点），用来模拟 `BlackjackCard` 中的扑克牌点数。`BlackjackCard` 结构体包含两个嵌套定义的枚举类型 `Suit` 和 `Rank`。
 
 在 `BlackjackCard` 中，`Ace` 牌可以表示 `1` 或者 `11`，`Ace` 牌的这一特征通过一个嵌套在 `Rank` 枚举中的结构体 `Values` 来表示：
 

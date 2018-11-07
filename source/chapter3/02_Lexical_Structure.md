@@ -23,19 +23,19 @@
 - [标识符](#identifiers)
 - [关键字和标点符号](#keywords)
 - [字面量](#literals)
-  - [整数字面量](#integer_literals) 
+  - [整数字面量](#integer_literals)
   - [浮点数字面量](#floating_point_literals)
   - [字符串字面量](#string_literals)
 - [运算符](#operators)
 
-Swift 的*“词法结构 (lexical structure)”* 描述了能构成该语言中有效符号 (token) 的字符序列。这些合法符号组成了语言中最底层的构建基块，并在之后的章节中用于描述语言的其他部分。一个合法符号由一个标识符 (identifier)、关键字 (keyword)、标点符号 (punctuation)、字面量 (literal) 或运算符 (operator) 组成。
+Swift 的*“词法结构（lexical structure）”* 描述了能构成该语言中有效符号（token）的字符序列。这些合法符号组成了语言中最底层的构建基块，并在之后的章节中用于描述语言的其他部分。一个合法符号由一个标识符（identifier）、关键字（keyword）、标点符号（punctuation）、字面量（literal）或运算符（operator）组成。
 
-通常情况下，通过考虑输入文本当中可能的最长子串，并且在随后将介绍的语法约束之下，根据随后将介绍的语法约束生成的，根据 Swift 源文件当中的字符来生成相应的“符号”。这种方法称为*“最长匹配 (longest match)”*，或者*“最大适合(maximal munch)”*。
+通常情况下，通过考虑输入文本当中可能的最长子串，并且在随后将介绍的语法约束之下，根据随后将介绍的语法约束生成的，根据 Swift 源文件当中的字符来生成相应的“符号”。这种方法称为*“最长匹配（longest match）”*，或者*“最大适合（maximal munch）”*。
 
 <a id="whitespace_and_comments"></a>
 ## 空白与注释
 
-空白 (whitespace) 有两个用途：分隔源文件中的符号以及帮助区分运算符属于前缀还是后缀（参见 [运算符](#operators)），在其他情况下空白则会被忽略。以下的字符会被当作空白：空格（U+0020）、换行符（U+000A）、回车符（U+000D）、水平制表符（U+0009）、垂直制表符（U+000B）、换页符（U+000C）以及空字符（U+0000）。
+空白（whitespace）有两个用途：分隔源文件中的符号以及帮助区分运算符属于前缀还是后缀（参见 [运算符](#operators)），在其他情况下空白则会被忽略。以下的字符会被当作空白：空格（U+0020）、换行符（U+000A）、回车符（U+000D）、水平制表符（U+0009）、垂直制表符（U+000B）、换页符（U+000C）以及空字符（U+0000）。
 
 注释被编译器当作空白处理。单行注释由 `//` 开始直至遇到换行符（U+000A）或者回车符（U+000D）。多行注释由 `/*` 开始，以 `*/` 结束。注释允许嵌套，但注释标记必须匹配。
 
@@ -61,16 +61,16 @@ Swift 的*“词法结构 (lexical structure)”* 描述了能构成该语言中
 > *多行注释内容* → [*多行注释内容项*](#multiline-comment-text-item) [*多行注释内容*](#multiline-comment-text)<sub>可选</sub>
 > *多行注释内容项* → [*多行注释*](#multiline-comment).
 > *多行注释内容项* → [*注释内容项*](#comment-text-item)
-> *多行注释内容项* → 任何 Unicode 标量值， 除了 `/*` 或者 `*/` 
+> *多行注释内容项* → 任何 Unicode 标量值， 除了 `/*` 或者 `*/`
 
 注释可以包含额外的格式和标记，正如 [*Markup Formatting Reference*](https://developer.apple.com/library/prerelease/ios/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html#//apple_ref/doc/uid/TP40016497) 所述。
 
 <a id="identifiers"></a>
 ## 标识符
 
-*标识符(identifier)* 可以由以下的字符开始：大写或小写的字母 `A` 到 `Z`、下划线 (`_`)、基本多文种平面 (Basic Multilingual Plane) 中非字符数字组合的  Unicode 字符以及基本多文种平面以外的非个人专用区字符。在首字符之后，允许使用数字和组合 Unicode 字符。
+*标识符（identifier）* 可以由以下的字符开始：大写或小写的字母 `A` 到 `Z`、下划线（`_`）、基本多文种平面（Basic Multilingual Plane）中非字符数字组合的  Unicode 字符以及基本多文种平面以外的非个人专用区字符。在首字符之后，允许使用数字和组合 Unicode 字符。
 
-使用保留字作为标识符，需要在其前后增加反引号 (`` ` ``)。例如，`class` 不是合法的标识符，但可以使用 `` `class` ``。反引号不属于标识符的一部分，`` `x` `` 和 `x` 表示同一标识符。
+使用保留字作为标识符，需要在其前后增加反引号（`` ` ``）。例如，`class` 不是合法的标识符，但可以使用 `` `class` ``。反引号不属于标识符的一部分，`` `x` `` 和 `x` 表示同一标识符。
 
 闭包中如果没有明确指定参数名称，参数将被隐式命名为 `$0`、`$1`、`$2` 等等。这些命名在闭包作用域范围内是合法的标识符。
 
@@ -121,7 +121,7 @@ Swift 的*“词法结构 (lexical structure)”* 描述了能构成该语言中
 * 用在语句中的关键字：`break`、`case`、`continue`、`default`、`defer`、`do`、`else`、`fallthrough`、`for`、`guard`、`if`、`in`、`repeat`、`return`、`switch`、`where` 以及 `while`。
 * 用在表达式和类型中的关键字：`as`、`catch`、`dynamicType`、`false`、`is`、`nil`、`rethrows`、`super`、`self`、`Self`、`throw`、`throws`、`true`、`try`、`#column`、`#file`、`#function` 以及 `#line`。
 * 用在模式中的关键字：`_`。
-* 以井字号 (`#`) 开头的关键字：`#available`、`#column`、`#else#elseif`、`#endif`、`#file`、`#function`、`#if`、`#line` 以及 `#selector`。
+* 以井字号（`#`）开头的关键字：`#available`、`#column`、`#else#elseif`、`#endif`、`#file`、`#function`、`#if`、`#line` 以及 `#selector`。
 * 特定上下文中被保留的关键字： `associativity`、`convenience`、`dynamic`、`didSet`、`final`、`get`、`infix`、`indirect`、`lazy`、`left`、`mutating`、`none`、`nonmutating`、`optional`、`override`、`postfix`、`precedence`、`prefix`、`Protocol`、`required`、`right`、`set`、`Type`、`unowned`、`weak` 以及 `willSet`。这些关键字在特定上下文之外可以被用做标识符。
 
 以下符号被当作保留符号，不能用于自定义运算符： `(`、`)`、`{`、`}`、`[`、`]`、`.`、`,`、`:`、`;`、`=`、`@`、`#`、`&`（作为前缀运算符）、`->`、`` ` ``、`?`、`!`（作为后缀运算符）。
@@ -129,7 +129,7 @@ Swift 的*“词法结构 (lexical structure)”* 描述了能构成该语言中
 <a id="literals"></a>
 ## 字面量
 
-*字面量 (literal)* 用来表示源码中某种特定类型的值，比如一个数字或字符串。
+*字面量（literal）* 用来表示源码中某种特定类型的值，比如一个数字或字符串。
 
 下面是字面量的一些示例：
 
@@ -150,21 +150,21 @@ true		    // 布尔值字面量
 
 <a id="numeric-literal"></a>
 > *数值字面量* → **-**<sub>可选</sub> [*整数字面量*](#integer-literal) | **-**<sub>可选</sub> [*浮点数字面量*](#floating-point-literal)
-> <a id="boolean-literal"></a> 
+> <a id="boolean-literal"></a>
 > *布尔值字面量* → **true** | **false**
-> <a id="nil-literal"></a> 
+> <a id="nil-literal"></a>
 > *nil 字面量* → **nil**
 
 <a id="integer_literals"></a>
 ### 整数字面量
 
-*整数字面量 (Integer Literals)* 表示未指定精度整数的值。整数字面量默认用十进制表示，可以加前缀来指定其他的进制。二进制字面量加 `0b`，八进制字面量加 `0o`，十六进制字面量加 `0x`。
+*整数字面量（Integer Literals）* 表示未指定精度整数的值。整数字面量默认用十进制表示，可以加前缀来指定其他的进制。二进制字面量加 `0b`，八进制字面量加 `0o`，十六进制字面量加 `0x`。
 
 十进制字面量包含数字 `0` 至 `9`。二进制字面量只包含 `0` 或 `1`，八进制字面量包含数字 `0` 至 `7`，十六进制字面量包含数字 `0` 至 `9` 以及字母 `A` 至 `F`（大小写均可）。
 
 负整数的字面量在整数字面量前加负号 `-`，比如 `-42`。
 
-整型字面面可以使用下划线 (`_`) 来增加数字的可读性，下划线会被系统忽略，因此不会影响字面量的值。同样地，也可以在数字前加 `0`，这同样也会被系统所忽略，并不会影响字面量的值。
+整型字面面可以使用下划线（`_`）来增加数字的可读性，下划线会被系统忽略，因此不会影响字面量的值。同样地，也可以在数字前加 `0`，这同样也会被系统所忽略，并不会影响字面量的值。
 
 除非特别指定，整数字面量的默认推导类型为 Swift 标准库类型中的 `Int`。Swift 标准库还定义了其他不同长度以及是否带符号的整数类型，请参考 [整数](../chapter2/01_The_Basics.html#integers)。
 
@@ -177,21 +177,21 @@ true		    // 布尔值字面量
 > *整数字面量* → [*十六进制字面量*](#hexadecimal-literal)
 
 <a id="binary-literal"></a>
-> *二进制字面量* → **0b** [*二进制数字*](#binary-digit) [*二进制字面量字符组*](#binary-literal-characters)<sub>可选</sub> 
+> *二进制字面量* → **0b** [*二进制数字*](#binary-digit) [*二进制字面量字符组*](#binary-literal-characters)<sub>可选</sub>
 > <a id="binary-digit"></a>
 > *二进制数字* → 数值 0 到 1
-> <a id="binary-literal-character"></a> 
+> <a id="binary-literal-character"></a>
 > *二进制字面量字符* → [*二进制数字*](#binary-digit) | _
-> <a id="binary-literal-characters"></a> 
+> <a id="binary-literal-characters"></a>
 > *二进制字面量字符组* → [*二进制字面量字符*](#binary-literal-character) [*二进制字面量字符组*](#binary-literal-characters)<sub>可选</sub>
 
 <a id="octal-literal"></a>
 > *八进制字面量* → **0o** [*八进字数字*](#octal-digit) [*八进制字符组*](#octal-literal-characters)<sub>可选</sub>
 > <a id="octal-digit"></a>
 > *八进字数字* → 数值 0 到 7
-> <a id="octal-literal-character"></a> 
+> <a id="octal-literal-character"></a>
 > *八进制字符* → [*八进字数字*](#octal-digit) | _
-> <a id="octal-literal-characters"></a> 
+> <a id="octal-literal-characters"></a>
 > *八进制字符组* → [*八进制字符*](#octal-literal-character) [*八进制字符组*](#octal-literal-characters)<sub>可选</sub>
 
 <a id="decimal-literal"></a>
@@ -203,7 +203,7 @@ true		    // 布尔值字面量
 > <a id="decimal-literal-character"></a>
 > *十进制字符* → [*十进制数字*](#decimal-digit) | _
 > <a id="decimal-literal-characters"></a>
-> *十进制字符组* → [*十进制字符*](#decimal-literal-character) [*十进制字符组*](#decimal-literal-characters)<sub>可选</sub> 
+> *十进制字符组* → [*十进制字符*](#decimal-literal-character) [*十进制字符组*](#decimal-literal-characters)<sub>可选</sub>
 
 <a id="hexadecimal-literal"></a>
 > *十六进制字面量* → **0x** [*十六进制数字*](#hexadecimal-digit) [*十六进制字面量字符组*](#hexadecimal-literal-characters)<sub>可选</sub>
@@ -217,28 +217,28 @@ true		    // 布尔值字面量
 <a id="floating_point_literals"></a>
 ### 浮点数字面量
 
-*浮点数字面量 (Floating-point literals)* 表示未指定精度浮点数的值。
+*浮点数字面量（Floating-point literals）* 表示未指定精度浮点数的值。
 
 浮点数字面量默认用十进制表示（无前缀），也可以用十六进制表示（加前缀 `0x`）。
 
-十进制浮点数字面量由十进制数字串后跟小数部分或指数部分（或两者皆有）组成。十进制小数部分由小数点 (`.`) 后跟十进制数字串组成。指数部分由大写或小写字母 `e` 为前缀后跟十进制数字串组成，这串数字表示 `e` 之前的数量乘以 10 的几次方。例如：`1.25e2` 表示 1.25 x 10²，也就是 `125.0`；同样，`1.25e－2` 表示 1.25 x 10¯²，也就是 `0.0125`。
+十进制浮点数字面量由十进制数字串后跟小数部分或指数部分（或两者皆有）组成。十进制小数部分由小数点（`.`）后跟十进制数字串组成。指数部分由大写或小写字母 `e` 为前缀后跟十进制数字串组成，这串数字表示 `e` 之前的数量乘以 10 的几次方。例如：`1.25e2` 表示 1.25 x 10²，也就是 `125.0`；同样，`1.25e－2` 表示 1.25 x 10¯²，也就是 `0.0125`。
 
 十六进制浮点数字面量由前缀 `0x` 后跟可选的十六进制小数部分以及十六进制指数部分组成。十六进制小数部分由小数点后跟十六进制数字串组成。指数部分由大写或小写字母 `p` 为前缀后跟十进制数字串组成，这串数字表示 `p` 之前的数量乘以 2 的几次方。例如：`0xFp2` 表示 15 x 2²，也就是 `60`；同样，`0xFp-2` 表示 15 x 2¯²，也就是 `3.75`。
 
-负数的浮点数字面量由负号 (`-`) 和浮点数字面量组成，例如 `-42.5`。
+负数的浮点数字面量由负号（`-`）和浮点数字面量组成，例如 `-42.5`。
 
-浮点数字面量允许使用下划线 (`_`) 来增强数字的可读性，下划线会被系统忽略，因此不会影响字面量的值。同样地，也可以在数字前加 `0`，并不会影响字面量的值。
+浮点数字面量允许使用下划线（`_`）来增强数字的可读性，下划线会被系统忽略，因此不会影响字面量的值。同样地，也可以在数字前加 `0`，并不会影响字面量的值。
 
 除非特别指定，浮点数字面量的默认推导类型为 Swift 标准库类型中的 `Double`，表示 64 位浮点数。Swift 标准库也定义了 `Float` 类型，表示 32 位浮点数。
 
 > 浮点数字面量语法
 > 
-<a id="floating-point-literal"></a> 
+<a id="floating-point-literal"></a>
 > *浮点数字面量* → [*十进制字面量*](#decimal-literal) [*十进制分数*](#decimal-fraction)<sub>可选</sub> [*十进制指数*](#decimal-exponent)<sub>可选</sub>
 > *浮点数字面量* → [*十六进制字面量*](#hexadecimal-literal) [*十六进制分数*](#hexadecimal-fraction)<sub>可选</sub> [*十六进制指数*](#hexadecimal-exponent)
 
 <a id="decimal-fraction"></a>
-> *十进制分数* → **.** [*十进制字面量*](#decimal-literal) 
+> *十进制分数* → **.** [*十进制字面量*](#decimal-literal)
 > <a id="decimal-exponent"></a>
 > *十进制指数* → [*十进制指数 e*](#floating-point-e) [*正负号*](#sign)<sub>可选</sub> [*十进制字面量*](#decimal-literal)
 
@@ -268,7 +268,7 @@ true		    // 布尔值字面量
 > `字符`
 > """
 
-与单行字符串字面量不同的是，多行字符串字面量可以包含不转义的双引号( " )，回车以及换行。它不能包含三个非转义的连续双引号。
+与单行字符串字面量不同的是，多行字符串字面量可以包含不转义的双引号（"），回车以及换行。它不能包含三个非转义的连续双引号。
 
 """ 之后的回车或者换行开始多行字符串字面量，不是字符串的一部分。 """ 之前回车或者换行结束字面量，也不是字符串的一部分。要让多行字符串字面量的开始或结束带有换行，就在第一行或者最后一行写一个空行。
 
@@ -289,7 +289,7 @@ true		    // 布尔值字面量
 * 单引号 `\'`
 * Unicode 标量 `\u{`n`}`，n 为一到八位的十六进制数字
 
-字符串字面量允许在反斜杠 (`\`) 后的括号 `()` 中插入表达式的值。插入表达式可以包含字符串字面量，但不能包含未转义的反斜线 (`\`)、回车符以及换行符。
+字符串字面量允许在反斜杠（`\`）后的括号 `()` 中插入表达式的值。插入表达式可以包含字符串字面量，但不能包含未转义的反斜线（`\`）、回车符以及换行符。
 
 例如，以下所有字符串字面量的值都是相同的：
 
@@ -313,20 +313,20 @@ let textB = "Hello world"
 > 字符串字面量语法
 > 
 <a id="string-literal"></a>
-> *字符串字面量* → [*静态字符串字面量*](#static-string-literal) | [*插值字符串字面量*](#interpolated-string-literal) 
+> *字符串字面量* → [*静态字符串字面量*](#static-string-literal) | [*插值字符串字面量*](#interpolated-string-literal)
 
 <a id="static-string-literal"></a>
 > *静态字符串字面量* → **"**[*引用文本*](#quoted-text)<sub>可选</sub>**"**
-> <a id="quoted-text"></a> 
-> *引用文本* → [*引用文本项*](#quoted-text-item) [*引用文本*](#quoted-text)<sub>可选</sub> 
+> <a id="quoted-text"></a>
+> *引用文本* → [*引用文本项*](#quoted-text-item) [*引用文本*](#quoted-text)<sub>可选</sub>
 > <a id="quoted-text-item"></a>
 > *引用文本项* → [*转义字符*](#escaped-character)
 > *引用文本项* → 除了 **"**、**\\**、U+000A、U+000D 以外的所有 Unicode 字符
 
 <a id="interpolated-string-literal"></a>
 > *插值字符串字面量* → **"**[*插值文本*](#interpolated-text)<sub>可选</sub>**"**
-> <a id="interpolated-text"></a> 
-> *插值文本* → [*插值文本项*](#interpolated-text-item) [*插值文本*](#interpolated-text)<sub>可选</sub> 
+> <a id="interpolated-text"></a>
+> *插值文本* → [*插值文本项*](#interpolated-text-item) [*插值文本*](#interpolated-text)<sub>可选</sub>
 > <a id="interpolated-text-item"></a>
 > *插值文本项* → **\\****(**[*表达式*](./04_Expressions.html)**)** | [*引用文本项*](#quoted-text-item)
 
@@ -341,9 +341,9 @@ let textB = "Hello world"
 
 Swift 标准库定义了许多可供使用的运算符，其中大部分在 [基础运算符](../chapter2/02_Basic_Operators.html) 和 [高级运算符](../chapter2/25_Advanced_Operators.html) 中进行了阐述。这一小节将描述哪些字符能用于自定义运算符。
 
-自定义运算符可以由以下其中之一的 ASCII 字符 `/`、`=`、`-`、`+`、`!`、`*`、`%`、`<`、`>`、`&`、`|`、`^`、`?` 以及 `~`，或者后面语法中规定的任一个 Unicode 字符（其中包含了*数学运算符*、*零散符号(Miscellaneous Symbols)* 以及印刷符号 (Dingbats) 之类的 Unicode 块）开始。在第一个字符之后，允许使用组合型 Unicode 字符。
+自定义运算符可以由以下其中之一的 ASCII 字符 `/`、`=`、`-`、`+`、`!`、`*`、`%`、`<`、`>`、`&`、`|`、`^`、`?` 以及 `~`，或者后面语法中规定的任一个 Unicode 字符（其中包含了*数学运算符*、*零散符号（Miscellaneous Symbols）* 以及印刷符号（Dingbats）之类的 Unicode 块）开始。在第一个字符之后，允许使用组合型 Unicode 字符。
 
-您也可以以点号 (`.`) 开头来定义自定义运算符。这些运算符可以包含额外的点，例如 `.+.`。如果某个运算符不是以点号开头的，那么它就无法再包含另外的点号了。例如，`+.+` 就会被看作为一个 `+` 运算符后面跟着一个 `.+` 运算符。
+您也可以以点号（`.`）开头来定义自定义运算符。这些运算符可以包含额外的点，例如 `.+.`。如果某个运算符不是以点号开头的，那么它就无法再包含另外的点号了。例如，`+.+` 就会被看作为一个 `+` 运算符后面跟着一个 `.+` 运算符。
 
 虽然您可以用问号 `?` 来自定义运算符，但是这个运算符不能只包含单独的一个问号。此外，虽然运算符可以包含一个惊叹号 `!`，但是前缀运算符不能够以问号或者惊叹号开头。
 
@@ -354,7 +354,7 @@ Swift 标准库定义了许多可供使用的运算符，其中大部分在 [基
 运算符两侧的空白被用来区分该运算符是否为前缀运算符、后缀运算符或二元运算符。规则总结如下：
 
 * 如果运算符两侧都有空白或两侧都无空白，将被看作二元运算符。例如：`a+++b` 和 `a +++ b` 当中的 `+++` 运算符会被看作二元运算符。
-* 如果运算符只有左侧空白，将被看作一元前缀运算符。例如 `a +++b` 中的 `+++` 运算符会被看做是一元前缀运算符。 
+* 如果运算符只有左侧空白，将被看作一元前缀运算符。例如 `a +++b` 中的 `+++` 运算符会被看做是一元前缀运算符。
 * 如果运算符只有右侧空白，将被看作一元后缀运算符。例如 `a+++ b` 中的 `+++` 运算符会被看作是一元后缀运算符。
 * 如果运算符左侧没有空白并紧跟 `.`，将被看作一元后缀运算符。例如 `a+++.b` 中的 `+++` 运算符会被视为一元后缀运算符（即上式被视为 `a+++ .b` 而不是 `a +++ .b`）。
 
@@ -387,7 +387,7 @@ Swift 标准库定义了许多可供使用的运算符，其中大部分在 [基
 > *头部运算符* → U+2794–U+2BFF
 > *头部运算符* → U+2E00–U+2E7F
 > *头部运算符* → U+3001–U+3003
-> *头部运算符* → U+3008–U+3030 
+> *头部运算符* → U+3008–U+3030
 
 <a id="operator-character"></a>
 > *运算符字符* → [*头部运算符*](#operator-head)
@@ -402,9 +402,9 @@ Swift 标准库定义了许多可供使用的运算符，其中大部分在 [基
 
 <a id="dot-operator-head"></a>
 > *头部点运算符* → **..**
-> <a id="dot-operator-character"></a> 
+> <a id="dot-operator-character"></a>
 > *点运算符字符* → **.** | [*运算符字符*](#operator-character)
-> <a id="dot-operator-characters"></a> 
+> <a id="dot-operator-characters"></a>
 > *点运算符字符组* → [*点运算符字符*](#dot-operator-character) [*点运算符字符组*](#dot-operator-characters)<sub>可选</sub>
 
 <a id="binary-operator"></a>

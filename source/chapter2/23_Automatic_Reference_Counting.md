@@ -1,34 +1,4 @@
 # 自动引用计数
------------------
-
-> 1.0
-> 翻译：[TimothyYe](https://github.com/TimothyYe)
-> 校对：[Hawstein](https://github.com/Hawstein)
-
-> 2.0
-> 翻译+校对：[Channe](https://github.com/Channe)
-
-> 2.1
-> 翻译：[Channe](https://github.com/Channe)
-> 校对：[shanks](http://codebuild.me)，[Realank](https://github.com/Realank) ，2016-01-23
-> 
-> 2.2
-> 翻译+校对：[SketchK](https://github.com/SketchK) 2016-05-14
-
-> 3.0.1
-> shanks，2016-11-13
-
-> 4.1
-> 翻译+校对：[mylittleswift](https://github.com/mylittleswift)
-
-本页包含内容：
-
-- [自动引用计数的工作机制](#how_arc_works)
-- [自动引用计数实践](#arc_in_action)
-- [类实例之间的循环强引用](#strong_reference_cycles_between_class_instances)
-- [解决实例之间的循环强引用](#resolving_strong_reference_cycles_between_class_instances)
-- [闭包引起的循环强引用](#strong_reference_cycles_for_closures)
-- [解决闭包引起的循环强引用](#resolving_strong_reference_cycles_for_closures)
 
 Swift 使用*自动引用计数（ARC）*机制来跟踪和管理你的应用程序的内存。通常情况下，Swift 内存管理机制会一直起作用，你无须自己来考虑内存的管理。ARC 会在类的实例不再被使用时，自动释放其占用的内存。
 
@@ -210,7 +180,7 @@ Swift 提供了两种办法用来解决你在使用类的属性时所遇到的�
 
 > 注意
 > 
-> 当 ARC 设置弱引用为 `nil` 时，属性观察不会被触发。 
+> 当 ARC 设置弱引用为 `nil` 时，属性观察不会被触发。
 
 下面的例子跟上面 `Person` 和 `Apartment` 的例子一致，但是有一个重要的区别。这一次，`Apartment` 的 `tenant` 属性被声明为弱引用：
 
@@ -271,10 +241,10 @@ unit4A = nil
 
 上面的两段代码展示了变量 `john` 和 `unit4A` 在被赋值为 `nil` 后，`Person` 实例和 `Apartment` 实例的析构函数都打印出“销毁”的信息。这证明了引用循环被打破了。
 
- > 注意
- > 
- > 在使用垃圾收集的系统里，弱指针有时用来实现简单的缓冲机制，因为没有强引用的对象只会在内存压力触发垃圾收集时才被销毁。但是在 ARC 中，一旦值的最后一个强引用被移除，就会被立即销毁，这导致弱引用并不适合上面的用途。
- 
+> 注意
+> 
+> 在使用垃圾收集的系统里，弱指针有时用来实现简单的缓冲机制，因为没有强引用的对象只会在内存压力触发垃圾收集时才被销毁。但是在 ARC 中，一旦值的最后一个强引用被移除，就会被立即销毁，这导致弱引用并不适合上面的用途。
+
 <a name="unowned_references"></a>
 ### 无主引用
 
